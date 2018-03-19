@@ -50,245 +50,214 @@ public class Interface implements ActionListener, KeyListener {
 	public void actionPerformed(ActionEvent e)
 	{
 			
-			ImageIcon blank = new ImageIcon("bart0.jpg");
-			Icon temp = new ImageIcon();
+		ImageIcon blank = new ImageIcon("bart0.jpg");		//Has constant access to the blank button
+		Icon temp = new ImageIcon();				//Used to save the current button
 	
-			if(e.getSource() == buttons[0][0]){
-				XValue = 0;
-				YValue = 0;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+		if(e.getSource() == buttons[0][0]){
+			XValue = 0;
+			YValue = 0;
+			testX = XValue - lastXValue;				//Gets the difference between Xs and Ys so the distance of the button being clicked can be determined if it's valid
+			testY = YValue - lastYValue;
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
 					
 						
-						temp = buttons[XValue][YValue].getIcon() ;	//Stores the image of the button you click on
-						buttons[XValue][YValue].setIcon(blank);		//Sets the button's image that you click on to blank
-						buttons[lastXValue][lastYValue].setIcon(temp);	//Sets the image of the button that was blank to the temp image
-			
-						lastXValue = 0;
-						lastYValue = 0;
-						IncrementScore();
-					
-				}
-				
+				temp = buttons[XValue][YValue].getIcon() ;	//Stores the image of the button you click on
+				buttons[XValue][YValue].setIcon(blank);		//Sets the button's image that you click on to blank
+				buttons[lastXValue][lastYValue].setIcon(temp);	//Sets the image of the button that was blank to the temp image
+				lastXValue = 0;					//Saves the X and Y value of the image that has just been clicked on as that will become the last button for the next click
+				lastYValue = 0;	
+				IncrementScore();				//Adds one to the score
 			}
+		}
 				
-			else if (e.getSource() == buttons[0][1]){
-				XValue = 0;
-				YValue = 1;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;	
-
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;						
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-						lastXValue = 0;
-						lastYValue = 1;
-						IncrementScore();
-					
-				}
-				
-			}			
-			
-			else if (e.getSource() == buttons[0][2]){
-				XValue = 0;
-				YValue = 2;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-			
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-			
-						lastXValue = 0;
-						lastYValue = 2;
-						IncrementScore();
-					
-				}
-
-			}
-			else if (e.getSource() == buttons[0][3]){
-				XValue = 0;
-				YValue = 3;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;		
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
+		else if (e.getSource() == buttons[0][1]){
+			XValue = 0;
+			YValue = 1;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;	
 	
-						lastXValue = 0;
-						lastYValue = 3;
-						IncrementScore();
-					
-
-				}
-				
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;						
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+				lastXValue = 0;
+				lastYValue = 1;
+				IncrementScore();
 			}
-
-			else if(e.getSource() == buttons[1][0]){
-				XValue = 1;
-				YValue = 0;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
+		}			
 			
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-				
-						temp = buttons[XValue][YValue].getIcon();
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 1;
-						lastYValue = 0;
-						IncrementScore();
-					
-
-				}
-				
-			}
-
-			else if(e.getSource() == buttons[1][1]){
-				XValue = 1;
-				YValue = 1;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 1;
-						lastYValue = 1;
-						IncrementScore();
-					
-				}
-				
-			}
-				
-
-			else if(e.getSource() == buttons[1][2]){
-				XValue = 1;
-				YValue = 2;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-	
-						lastXValue = 1;
-						lastYValue = 2;
-						IncrementScore();
-					
-
-				}
-				
-			}	
-
-			else if(e.getSource() == buttons[1][3]){
-				XValue = 1;
-				YValue = 3;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 1;
-						lastYValue = 3;
-						IncrementScore();
-					
-				}
+		else if (e.getSource() == buttons[0][2]){
+			XValue = 0;
+			YValue = 2;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
 			
-			}
-				
-			else if(e.getSource() == buttons[2][0]){
-				XValue = 2;
-				YValue = 0;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 2;
-						lastYValue = 0;	
-						IncrementScore();
-					
-				}
-				
-			}
-				
-			else if(e.getSource() == buttons[2][1]){
-				XValue = 2;
-				YValue = 1;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){	
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 2;
-						lastYValue = 1;
-						IncrementScore();
-					
-
-				}
-			
-			}
-	
-			else if(e.getSource() == buttons[2][2]){
-				XValue = 2;
-				YValue = 2;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
-
-						lastXValue = 2;
-						lastYValue = 2;
-						IncrementScore();
-					
-				}
-	
-			}
-
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
 		
-			else if(e.getSource() == buttons[2][3]){
-				XValue = 2;
-				YValue = 3;
-				testX = XValue - lastXValue;
-				testY = YValue - lastYValue;
-				
-				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
-						temp = buttons[XValue][YValue].getIcon() ;
-						buttons[XValue][YValue].setIcon(blank);
-						buttons[lastXValue][lastYValue].setIcon(temp);
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
 
-						lastXValue = 2;
-						lastYValue = 3;
-						IncrementScore();
-					
-
-				}
-		
+				lastXValue = 0;
+				lastYValue = 2;
+				IncrementScore();
 			}
+		}
+		else if (e.getSource() == buttons[0][3]){
+			XValue = 0;
+			YValue = 3;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;		
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 0;
+				lastYValue = 3;
+				IncrementScore();
+			}
+		}
+
+		else if(e.getSource() == buttons[1][0]){
+			XValue = 1;
+			YValue = 0;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+		
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+			
+				temp = buttons[XValue][YValue].getIcon();
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 1;
+				lastYValue = 0;
+				IncrementScore();
+			}
+		}
+
+		else if(e.getSource() == buttons[1][1]){
+			XValue = 1;
+			YValue = 1;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 1;
+				lastYValue = 1;
+				IncrementScore();
+			}
+		}
+				
+
+		else if(e.getSource() == buttons[1][2]){
+			XValue = 1;
+			YValue = 2;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 1;
+				lastYValue = 2;
+				IncrementScore();
+			}
+		}	
+
+		else if(e.getSource() == buttons[1][3]){
+			XValue = 1;
+			YValue = 3;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 1;
+				lastYValue = 3;
+				IncrementScore();
+			}
+		}
+				
+		else if(e.getSource() == buttons[2][0]){
+			XValue = 2;
+			YValue = 0;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 2;
+				lastYValue = 0;	
+				IncrementScore();
+			}
+		}
+				
+		else if(e.getSource() == buttons[2][1]){
+			XValue = 2;
+			YValue = 1;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){	
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 2;
+				lastYValue = 1;
+				IncrementScore();
+			}
+		}
+
+		else if(e.getSource() == buttons[2][2]){
+			XValue = 2;
+			YValue = 2;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 2;
+				lastYValue = 2;
+				IncrementScore();
+			}
+		}
+
+	
+		else if(e.getSource() == buttons[2][3]){
+			XValue = 2;
+			YValue = 3;
+			testX = XValue - lastXValue;
+			testY = YValue - lastYValue;
+			
+			if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
+				temp = buttons[XValue][YValue].getIcon() ;
+				buttons[XValue][YValue].setIcon(blank);
+				buttons[lastXValue][lastYValue].setIcon(temp);
+
+				lastXValue = 2;
+				lastYValue = 3;
+				IncrementScore();
+			}
+		}
 			
 	}
 	public void CreateLeaderboard() 
@@ -298,32 +267,29 @@ public class Interface implements ActionListener, KeyListener {
 		
 		//Text field for entering the names
 		textField.addKeyListener(this);
-	
+		//Sets leaderboard to the right settings
 		board.setTitle("High Scores");
 		board.setSize(400,400);
 		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		//Creates the grid for the labels to be added to
 		GridLayout boardGrid = new GridLayout(11,2);
 		boardPane.setLayout(boardGrid);
 		board.add(boardPane);
 		board.setContentPane(boardPane);
 		
-
 		for (int i=0; i <11; i++){
 			if(i<10){
-				labels[i] = new JLabel("NONE");
+				labels[i] = new JLabel("NONE");	//labels is the left hand column, for names
 				boardPane.add(labels[i]);
-				labels2[i] = new JLabel("0");
+				labels2[i] = new JLabel("0");	//labels2is the rght hand column for scores
 				boardPane.add(labels2[i]);
-			}
+			}					//Loops through till there's ten rows for score then adds the name entry label and text field
 			else{
 				labels[i] = new JLabel("Your Name: ");
 				boardPane.add(labels[i]);
 				boardPane.add(textField);
 			}
-			
-					
-			
+	
 		}
 		
 		board.setVisible(true);
@@ -331,14 +297,13 @@ public class Interface implements ActionListener, KeyListener {
 	public void IncrementScore()
 	{
 		score++;
-		labels2[0].setText(String.valueOf(score));
+		labels2[0].setText(String.valueOf(score));	//Converts score from integer to string and updates the leaderboard
 	}
 	public void keyPressed(KeyEvent e)
 	{
-		if(e.getKeyCode() == KeyEvent.VK_ENTER){
-			String tempName = textField.getText();
-			tempName = textField.getText();
-			labels[0].setText(tempName);
+		if(e.getKeyCode() == KeyEvent.VK_ENTER){	//Only performs something when the enter key is pressed
+			String tempName = textField.getText();	
+			labels[0].setText(tempName);		// Sets the highest label to the entered name
 		}
 	}
 	public void keyReleased(KeyEvent e){}
