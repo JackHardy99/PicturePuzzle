@@ -1,8 +1,14 @@
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 public class GUI implements ActionListener {
 	JButton[][] buttons = new JButton[3][4];
 	JFrame gameFrame = new JFrame();		
 	JPanel imagePanel = new JPanel();
 	
+		
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY;
 	
 
@@ -37,12 +43,11 @@ public class GUI implements ActionListener {
 		
 	
 		gameFrame.setVisible(true);
+		//Constructs Leaderboard
+		Leaderboard();
 		
-		
-			
-		}
-
 	}
+
 	public void actionPerformed(ActionEvent e)
 	{
 			
@@ -277,36 +282,43 @@ public class GUI implements ActionListener {
 			}
 			
 	}
-		public void Leaderboard()
-		{
-			
-			JFrame board = new JFrame();	
-			JPanel boardPane = new JPanel();
-			//Labels for the left hand column
-			JLabel[] labels = new JLabel[11];
-			//Labels for the right hand column
-			JLabel[] labels2 = new JLabel [10];
+	public void Leaderboard()
+	{
+		JFrame board = new JFrame();	
+		JPanel boardPane = new JPanel();
+		//Labels for the left hand column
+		JLabel[] labels = new JLabel[11];
+		//Labels for the right hand column
+		JLabel[] labels2 = new JLabel [10];
 
 	
-			board.setTitle("High Scores");
-			board.setSize(400,400);
-			board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		board.setTitle("High Scores");
+		board.setSize(400,400);
+		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			GridLayout boardGrid = new GridLayout(11,2);
-			boardPane.setLayout(boardGrid);
-			board.add(boardPane);
-			board.setContentPane(boardPane);
+		GridLayout boardGrid = new GridLayout(11,2);
+		boardPane.setLayout(boardGrid);
+		board.add(boardPane);
+		board.setContentPane(boardPane);
 		
 
-			for (int i=0; i <20; i++){
-		
-					labels[i] = new JLabel("NONE");
-					boardPane.add(labels[i]);
+		for (int i=0; i <11; i++){
+				
+				labels[i] = new JLabel("NONE");
+				boardPane.add(labels[i]);
+				if(i<10){
+					labels2[i] = new JLabel("NONE2");
+					boardPane.add(labels2[i]);
+				}
 			
-			}
-			board.setVisible(true);
+		}
+		board.setVisible(true);
 		
 
 
-		}
+
+	}
+	
+	
 }
+
