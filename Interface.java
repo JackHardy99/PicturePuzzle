@@ -3,8 +3,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GUI implements ActionListener, KeyListener {
+public class GUI implements ActionListener, KeyListener {	
+	//Creates the array for the buttons to be stored in	
 	JButton[][] buttons = new JButton[3][4];
+	//Creates the Frame for the game
 	JFrame gameFrame = new JFrame();		
 	JPanel imagePanel = new JPanel();
 	//Labels for the left hand column
@@ -14,18 +16,11 @@ public class GUI implements ActionListener, KeyListener {
 	//Text field for the user entered name
 	JTextField textField = new JTextField(20);
 	
-		
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
-	
-	
 
 	//Constructor method
 	public GUI()  {
-
-		//Creates a new Puzzle Frame
-
-		//Creates panel
-	
+		// Sets the frame to the correct settings
 		gameFrame.setTitle("Swingin' Simpsons");
 		gameFrame.setSize(444,363);
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +28,7 @@ public class GUI implements ActionListener, KeyListener {
 		//Creates grid
 		GridLayout grid = new GridLayout(3,4);
 		imagePanel.setLayout(grid);
-		
+		//Adds panel to the frame
 		gameFrame.add(imagePanel);
 	
 		//Loads the images storing the images in an icon then a button, adding it to the panel then adding an action listener to the button
@@ -44,15 +39,12 @@ public class GUI implements ActionListener, KeyListener {
 				buttons[i][j] = new JButton(image);
 				imagePanel.add(buttons[i][j]);
 				buttons[i][j].addActionListener(this);
-				count++;
+				count++;		//Used for keeping count of the image number, seperate to the loop integers
 			}
 		}
-		
-	
 		gameFrame.setVisible(true);
 		//Constructs Leaderboard
-		CreateLeaderboard();
-		
+		CreateLeaderboard();	
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -344,8 +336,9 @@ public class GUI implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e)
 	{
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){
-			System.out.println("Enter");
-			labels[0].setText(String.valueOf(textField));
+			String tempName = textField.getText();
+			tempName = textField.getText();
+			labels[0].setText(tempName);
 		}
 	}
 	public void keyReleased(KeyEvent e){}
