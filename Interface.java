@@ -2,7 +2,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+/**
+*The Interface class is the main runnings behind the picture puzzle
+*interacting with the leaderboard and scores
+*
+*/
 public class Interface implements ActionListener, KeyListener {	
 	//Creates the array for the buttons to be stored in	
 	JButton[][] buttons = new JButton[3][4];
@@ -17,9 +21,18 @@ public class Interface implements ActionListener, KeyListener {
 	JTextField textField = new JTextField(20);
 	
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
+		
+
 
 	//Constructor method
 	public Interface()  {
+		/**
+		*This is the constructor class for the game interface, it sets up the game's frame
+		*and panel, adding a grid to it then loading each image into an icon and adding each 			*icon to a button.
+		*This creates a 3x4 image grid
+		*/
+
+
 		// Sets the frame to the correct settings
 		gameFrame.setTitle("Swingin' Simpsons");
 		gameFrame.setSize(444,363);
@@ -49,6 +62,15 @@ public class Interface implements ActionListener, KeyListener {
 
 	public void actionPerformed(ActionEvent e)
 	{
+		/**
+		*
+		*This is the action class, should any buttons be clicked, this code will define what 
+		*happens
+		*<p>
+		*It takes what button has been clicked, compares this with the last button clicked 			*and if they are adjacent the images are swapped. 
+		*It then will increment the score, the amount of clicks.
+		*
+		*/
 			
 		ImageIcon blank = new ImageIcon("bart0.jpg");		//Has constant access to the blank button
 		Icon temp = new ImageIcon();				//Used to save the current button
@@ -262,6 +284,15 @@ public class Interface implements ActionListener, KeyListener {
 	}
 	public void CreateLeaderboard() 
 	{
+		/**
+		*This creates the leaderboard where a players's scores can be saved
+		*<p>
+		*It uses a new window alongside the game's window, adding 2 columns of labels. 
+		*The first column is the names column and the second is the scores column.
+		*The slot in the right hand column is a text field for the user to enter their name
+		*/
+
+
 		JFrame board = new JFrame();	
 		JPanel boardPane = new JPanel();
 		
@@ -296,11 +327,21 @@ public class Interface implements ActionListener, KeyListener {
 	}
 	public void IncrementScore()
 	{
+		/**
+		*This adds one to the score of the user because they've clicked a valid button
+		*/
+		
 		score++;
 		labels2[0].setText(String.valueOf(score));	//Converts score from integer to string and updates the leaderboard
 	}
 	public void keyPressed(KeyEvent e)
 	{
+		/*
+		*
+		*
+		*
+		*/
+
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){	//Only performs something when the enter key is pressed
 			String tempName = textField.getText();	
 			labels[0].setText(tempName);		// Sets the highest label to the entered name
