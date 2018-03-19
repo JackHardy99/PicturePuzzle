@@ -9,7 +9,7 @@ public class GUI implements ActionListener {
 	JPanel imagePanel = new JPanel();
 	
 		
-	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY;
+	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
 	
 
 	//Constructor method
@@ -68,10 +68,10 @@ public class GUI implements ActionListener {
 			
 						lastXValue = 0;
 						lastYValue = 0;
-				
+						IncrementScore();
 					
 				}
-				Leaderboard();
+				
 			}
 				
 			else if (e.getSource() == buttons[0][1]){
@@ -86,9 +86,10 @@ public class GUI implements ActionListener {
 						buttons[lastXValue][lastYValue].setIcon(temp);
 						lastXValue = 0;
 						lastYValue = 1;
+						IncrementScore();
 					
 				}
-				Leaderboard();
+				
 			}			
 			
 			else if (e.getSource() == buttons[0][2]){
@@ -105,9 +106,10 @@ public class GUI implements ActionListener {
 			
 						lastXValue = 0;
 						lastYValue = 2;
+						IncrementScore();
 					
 				}
-				Leaderboard();
+
 			}
 			else if (e.getSource() == buttons[0][3]){
 				XValue = 0;
@@ -122,10 +124,11 @@ public class GUI implements ActionListener {
 	
 						lastXValue = 0;
 						lastYValue = 3;
+						IncrementScore();
 					
 
 				}
-				Leaderboard();
+				
 			}
 
 			else if(e.getSource() == buttons[1][0]){
@@ -142,10 +145,11 @@ public class GUI implements ActionListener {
 
 						lastXValue = 1;
 						lastYValue = 0;
+						IncrementScore();
 					
 
 				}
-				Leaderboard();
+				
 			}
 
 			else if(e.getSource() == buttons[1][1]){
@@ -162,9 +166,10 @@ public class GUI implements ActionListener {
 
 						lastXValue = 1;
 						lastYValue = 1;
+						IncrementScore();
 					
 				}
-				Leaderboard();
+				
 			}
 				
 
@@ -182,10 +187,11 @@ public class GUI implements ActionListener {
 	
 						lastXValue = 1;
 						lastYValue = 2;
+						IncrementScore();
 					
 
 				}
-				Leaderboard();
+				
 			}	
 
 			else if(e.getSource() == buttons[1][3]){
@@ -201,9 +207,10 @@ public class GUI implements ActionListener {
 
 						lastXValue = 1;
 						lastYValue = 3;
+						IncrementScore();
 					
 				}
-				Leaderboard();
+			
 			}
 				
 			else if(e.getSource() == buttons[2][0]){
@@ -219,9 +226,10 @@ public class GUI implements ActionListener {
 
 						lastXValue = 2;
 						lastYValue = 0;	
+						IncrementScore();
 					
 				}
-				Leaderboard();
+				
 			}
 				
 			else if(e.getSource() == buttons[2][1]){
@@ -237,10 +245,11 @@ public class GUI implements ActionListener {
 
 						lastXValue = 2;
 						lastYValue = 1;
+						IncrementScore();
 					
 
 				}
-				Leaderboard();
+			
 			}
 	
 			else if(e.getSource() == buttons[2][2]){
@@ -256,9 +265,10 @@ public class GUI implements ActionListener {
 
 						lastXValue = 2;
 						lastYValue = 2;
+						IncrementScore();
 					
 				}
-				Leaderboard();
+	
 			}
 
 		
@@ -275,14 +285,15 @@ public class GUI implements ActionListener {
 
 						lastXValue = 2;
 						lastYValue = 3;
+						IncrementScore();
 					
 
 				}
-				Leaderboard();
+		
 			}
 			
 	}
-	public void Leaderboard()
+	public void CreateLeaderboard()
 	{
 		JFrame board = new JFrame();	
 		JPanel boardPane = new JPanel();
@@ -290,6 +301,8 @@ public class GUI implements ActionListener {
 		JLabel[] labels = new JLabel[11];
 		//Labels for the right hand column
 		JLabel[] labels2 = new JLabel [10];
+		//Text field for entering the names
+		JTextField textField = new JTextField(20);
 
 	
 		board.setTitle("High Scores");
@@ -310,15 +323,18 @@ public class GUI implements ActionListener {
 					labels2[i] = new JLabel("NONE2");
 					boardPane.add(labels2[i]);
 				}
+				else {
+					boardPane.add(textField);
+				}
+					
 			
 		}
 		board.setVisible(true);
-		
-
-
-
 	}
-	
+	public int IncrementScore()
+	{
+		score++;
+	}
 	
 }
 
