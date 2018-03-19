@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GUI implements ActionListener, KeyListener {	
+public class Interface implements ActionListener, KeyListener {	
 	//Creates the array for the buttons to be stored in	
 	JButton[][] buttons = new JButton[3][4];
 	//Creates the Frame for the game
@@ -19,7 +19,7 @@ public class GUI implements ActionListener, KeyListener {
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
 
 	//Constructor method
-	public GUI()  {
+	public Interface()  {
 		// Sets the frame to the correct settings
 		gameFrame.setTitle("Swingin' Simpsons");
 		gameFrame.setSize(444,363);
