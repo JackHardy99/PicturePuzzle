@@ -1,13 +1,16 @@
-
+ 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class GUI implements ActionListener {
+public class GUI implements ActionListener, KeyListener {
 	JButton[][] buttons = new JButton[3][4];
 	JFrame gameFrame = new JFrame();		
 	JPanel imagePanel = new JPanel();
-	
+	//Labels for the left hand column
+	JLabel[] labels = new JLabel[11];
+	//Labels for the right hand column
+	JLabel[] labels2 = new JLabel [10];
 		
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
 	
@@ -44,7 +47,7 @@ public class GUI implements ActionListener {
 	
 		gameFrame.setVisible(true);
 		//Constructs Leaderboard
-		Leaderboard();
+		CreateLeaderboard();
 		
 	}
 
@@ -199,7 +202,6 @@ public class GUI implements ActionListener {
 				YValue = 3;
 				testX = XValue - lastXValue;
 				testY = YValue - lastYValue;
-				
 				if((testX == 1 && testY == 0) || (testX == -1 && testY == 0) || (testX == 0 && testY == 1) || (testX == 0 && testY == -1)){
 						temp = buttons[XValue][YValue].getIcon() ;
 						buttons[XValue][YValue].setIcon(blank);
@@ -293,14 +295,11 @@ public class GUI implements ActionListener {
 			}
 			
 	}
-	public void CreateLeaderboard()
+	public void CreateLeaderboard() 
 	{
 		JFrame board = new JFrame();	
 		JPanel boardPane = new JPanel();
-		//Labels for the left hand column
-		JLabel[] labels = new JLabel[11];
-		//Labels for the right hand column
-		JLabel[] labels2 = new JLabel [10];
+		
 		//Text field for entering the names
 		JTextField textField = new JTextField(20);
 
@@ -331,10 +330,14 @@ public class GUI implements ActionListener {
 		}
 		board.setVisible(true);
 	}
-	public int IncrementScore()
+	public void IncrementScore()
 	{
 		score++;
+		labels2[0].setText(String.valueOf(score));
 	}
+	public void keyListener(KeyEvent e){
+	}
+	
 	
 }
 
