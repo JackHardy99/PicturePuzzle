@@ -11,8 +11,12 @@ public class GUI implements ActionListener, KeyListener {
 	JLabel[] labels = new JLabel[11];
 	//Labels for the right hand column
 	JLabel[] labels2 = new JLabel [10];
+	//Text field for the user entered name
+	JTextField textField = new JTextField(20);
+	
 		
 	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
+	
 	
 
 	//Constructor method
@@ -29,7 +33,7 @@ public class GUI implements ActionListener, KeyListener {
 		//Creates grid
 		GridLayout grid = new GridLayout(3,4);
 		imagePanel.setLayout(grid);
-	
+		
 		gameFrame.add(imagePanel);
 	
 		//Loads the images storing the images in an icon then a button, adding it to the panel then adding an action listener to the button
@@ -301,8 +305,7 @@ public class GUI implements ActionListener, KeyListener {
 		JPanel boardPane = new JPanel();
 		
 		//Text field for entering the names
-		JTextField textField = new JTextField(20);
-
+		textField.addKeyListener(this);
 	
 		board.setTitle("High Scores");
 		board.setSize(400,400);
@@ -315,19 +318,22 @@ public class GUI implements ActionListener, KeyListener {
 		
 
 		for (int i=0; i <11; i++){
-				
+			if(i<10){
 				labels[i] = new JLabel("NONE");
 				boardPane.add(labels[i]);
-				if(i<10){
-					labels2[i] = new JLabel("NONE2");
-					boardPane.add(labels2[i]);
-				}
-				else {
-					boardPane.add(textField);
-				}
+				labels2[i] = new JLabel("0");
+				boardPane.add(labels2[i]);
+			}
+			else{
+				labels[i] = new JLabel("Your Name: ");
+				boardPane.add(labels[i]);
+				boardPane.add(textField);
+			}
+			
 					
 			
 		}
+		
 		board.setVisible(true);
 	}
 	public void IncrementScore()
@@ -335,9 +341,15 @@ public class GUI implements ActionListener, KeyListener {
 		score++;
 		labels2[0].setText(String.valueOf(score));
 	}
-	public void keyListener(KeyEvent e){
+	public void keyPressed(KeyEvent e)
+	{
+		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+			System.out.println("Enter");
+			labels[0].setText(String.valueOf(textField));
+		}
 	}
-	
+	public void keyReleased(KeyEvent e){}
+	public void keyTyped(KeyEvent e) {}
 	
 }
 
