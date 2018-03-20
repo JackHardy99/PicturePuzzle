@@ -20,7 +20,7 @@ public class Interface implements ActionListener, KeyListener {
 	//Text field for the user entered name
 	JTextField textField = new JTextField(20);
 	
-	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0;
+	private int XValue = 0, YValue = 0, lastXValue = 0, lastYValue = 0, testX, testY, score = 0, enterCount=0;
 		
 
 
@@ -332,21 +332,47 @@ public class Interface implements ActionListener, KeyListener {
 		*/
 		
 		score++;
-		labels2[0].setText(String.valueOf(score));	//Converts score from integer to string and updates the leaderboard
+		labels2[enterCount].setText(String.valueOf(score));	//Converts score from integer to string and updates the leaderboard
 	}
 	public void keyPressed(KeyEvent e)
 	{
 		/*
-		*
-		*
-		*
+		*This method runs when the enter key is pressed when entering a name in the textbox
+		*It saves the name to a label
 		*/
-
+		
 		if(e.getKeyCode() == KeyEvent.VK_ENTER){	//Only performs something when the enter key is pressed
 			String tempName = textField.getText();	
-			labels[0].setText(tempName);		// Sets the highest label to the entered name
+			labels[enterCount].setText(tempName);	// Sets the highest label to the entered name
+			textField.setText("");
+			enterCount++;				//Increments enterCount so the next score and name will be on a new row
+			score=0;
+			OrderLabels();
 		}
 	}
+	public void OrderLabels()
+	{	
+		String tempText ="", temp="";
+		for (int i = 0; i < 10; i++) {
+        		for (int j = 1; j < (10 - i); j++) {
+				if (Integer.valueOf(labels2[j-1].getText()) < Integer.valueOf(labels2[j].getText())) {
+               				temp = labels2[j - 1].getText();
+					tempText = labels2[j].getText();
+                			labels2[j - 1].setText(tempText);
+                			labels2[j].setText(temp);
+					
+					temp = labels[j-1].getText();
+					tempText = labels[j].getText();
+					labels[j-1].setText(tempText);
+					labels[j].setText(temp);
+				}
+			}
+            	}
+
+        }
+   
+	
+	
 	public void keyReleased(KeyEvent e){}
 	public void keyTyped(KeyEvent e) {}
 	
