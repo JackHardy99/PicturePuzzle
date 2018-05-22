@@ -37,6 +37,19 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		g.dispose();
 	}
 	
+	public void ballDirection(){
+		double XDir;
+		double YDir;
+		
+		XDir = mouseClickX - ballPosX;
+		YDir = mouseClickY - ballPosY;
+		
+		XDir = XDir/100;
+		YDir = YDir/100;
+		
+		ballXDir = XDir;
+		ballYDir = YDir;
+	}
 	
 	public void moveBall() {
 		timer.start();
@@ -65,7 +78,7 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		
 			mouseClickX = e.getX();
 			mouseClickY = e.getY();
-		
+			ballDirection();
 			play = true;
 
 		
