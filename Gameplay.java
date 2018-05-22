@@ -9,7 +9,8 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 	private double ballXDir =-3, ballYDir=-6;
 	
 	public Gameplay() {
-		
+		addMouseListener(this);
+		addKeyListener(this);
 		timer = new Timer(delay, this);
 		timer.start();
 		
@@ -39,7 +40,7 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 	public void moveBall() {
 		timer.start();
 		
-			
+			if (play) {
 				ballPosX += ballXDir;
 				ballPosY += ballYDir;
 				//Left Border
@@ -57,6 +58,7 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 				
 				//repaint() calls paint again and updates the screen
 				repaint();
+			}
 				
 		
 	}
