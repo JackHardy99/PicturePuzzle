@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private boolean play = false;
 	private Timer timer;
-	private int delay = 8, ballPosX = 340, ballPosY = 925;
+	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0;
 	private double ballXDir =-3, ballYDir=-6;
 	
 	public Gameplay() {
@@ -37,6 +37,7 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		g.dispose();
 	}
 	
+	
 	public void moveBall() {
 		timer.start();
 		
@@ -59,11 +60,16 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 				//repaint() calls paint again and updates the screen
 				repaint();
 			}
-				
-		
 	}
 	public void mouseClicked(MouseEvent e) {
-		play = true;
+		
+			mouseClickX = e.getX();
+			mouseClickY = e.getY();
+		
+			play = true;
+
+		
+		
 	}
 	public void actionPerformed(ActionEvent e) {
 		moveBall();
