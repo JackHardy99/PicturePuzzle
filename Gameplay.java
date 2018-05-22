@@ -5,6 +5,8 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private Timer timer;
 	private int delay = 8, ballPosX = 340, ballPosY = 925;
+	private double ballXDir, ballYDir;
+	
 	public Gameplay() {
 		
 		timer = new Timer(delay, this);
@@ -33,6 +35,30 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		g.dispose();
 	}
 	
+	public void moveBall() {
+		timer.start();
+		
+			
+				ballPosX += ballXDir;
+				ballPosY += ballYDir;
+				//Left Border
+				if (ballPosX < 0) {
+					ballXDir = -ballXDir;
+				}
+				//Top Border
+				if (ballPosY < 0 ) {
+					ballYDir = -ballYDir;
+				}
+				//Right Border
+				if (ballPosX > 695) {
+					ballXDir = - ballXDir;
+				}
+				
+				//repaint() calls paint again and updates the screen
+				repaint();
+				
+		
+	}
 	public void mouseClicked(MouseEvent e) {
 
 	}
