@@ -21,4 +21,7 @@ public class MapGenerator {
 	public void setBrickValue(int row, int col) {
 		map[row][col] = map[row][col] -1;
 	}
+	public int getBrickValue(int row, int col) {
+		return map[row][col];
+	}
 }
