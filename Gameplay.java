@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
-	private boolean play = false, mouseClicked = false;
+	private boolean play = false, mouseClicked = false, notBottom = true;
 	private Timer timer;
 	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0;
 	private double ballXDir =-3, ballYDir=-6;
@@ -68,6 +68,11 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 				//Right Border
 				if (ballPosX > 695) {
 					ballXDir = - ballXDir;
+				}
+				if (ballPosY>1000) {
+					notBottom = false;
+						//resets the map and ball
+						
 				}
 				
 				//repaint() calls paint again and updates the screen
