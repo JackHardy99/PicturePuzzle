@@ -5,10 +5,12 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private boolean play = false, mouseClicked = false, notBottom = true;
 	private Timer timer;
-	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0;
+	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7;
 	private double ballXDir =-3, ballYDir=-6;
+	private MapGenerator map;
 	
 	public Gameplay() {
+		map = new MapGenerator(brickRow,brickColumn, brickHealth);
 		addMouseListener(this);
 		addKeyListener(this);
 		timer = new Timer(delay, this);
@@ -91,6 +93,14 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 	}
 	public void actionPerformed(ActionEvent e) {
 		moveBall();
+	}
+	public void resetBall() {
+		ballPosX = 340;
+		ballPosY = 925;
+		play = false;
+		notBottom = true;
+		repaint();
+		mouseClicked = false;
 	}
 	public void mousePressed(MouseEvent e) {}
 	@Override
