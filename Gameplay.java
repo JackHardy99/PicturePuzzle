@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
-	private boolean play = false;
+	private boolean play = false, mouseClicked = false;
 	private Timer timer;
 	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0;
 	private double ballXDir =-3, ballYDir=-6;
@@ -75,13 +75,13 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 			}
 	}
 	public void mouseClicked(MouseEvent e) {
-		
+		if (mouseClicked==false) {
+			mouseClicked = true;
 			mouseClickX = e.getX();
 			mouseClickY = e.getY();
 			ballDirection();
 			play = true;
-
-		
+		}
 		
 	}
 	public void actionPerformed(ActionEvent e) {
