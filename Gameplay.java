@@ -11,6 +11,20 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		timer.start();
 		
 	}
+	public void paint(Graphics g) {
+		//background
+		g.setColor(Color.black);
+		g.fillRect(1, 1, 700, 1000);
+		
+		//border
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, 3, 1000);
+		g.fillRect(0, 0, 700, 3);
+		g.fillRect(697, 0, 3, 1000);
+		
+		g.dispose();
+	}
+	
 	public void mouseClicked(MouseEvent e) {
 
 	}
