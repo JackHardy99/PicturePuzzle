@@ -17,4 +17,8 @@ public class MapGenerator {
 		brickWidth = 540/7;
 		brickHeight = 150/3;
 	}
+	
+	public void setBrickValue(int row, int col) {
+		map[row][col] = map[row][col] -1;
+	}
 }
