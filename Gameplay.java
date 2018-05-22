@@ -3,9 +3,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
+	private boolean play = false;
 	private Timer timer;
 	private int delay = 8, ballPosX = 340, ballPosY = 925;
-	private double ballXDir, ballYDir;
+	private double ballXDir =-3, ballYDir=-6;
 	
 	public Gameplay() {
 		
@@ -60,10 +61,10 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		
 	}
 	public void mouseClicked(MouseEvent e) {
-
+		play = true;
 	}
 	public void actionPerformed(ActionEvent e) {
-		
+		moveBall();
 	}
 	public void mousePressed(MouseEvent e) {}
 	@Override
