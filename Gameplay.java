@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private boolean play = false, mouseClicked = false, notBottom = true;
 	private Timer timer;
-	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7;
+	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7,score;
 	private double ballXDir =-3, ballYDir=-6;
 	private MapGenerator map;
 	
@@ -31,6 +31,15 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		//launcher
 		g.setColor(Color.white);
 		g.fillRect(340, 950, 20, 50);
+		
+		//Adds the score to the top left corner
+		g.setColor(Color.white);
+		g.setFont(new Font("serif",Font.BOLD, 25));
+		g.drawString(""+score, 590, 30);
+		
+		
+		//Bricks
+		map.draw((Graphics2D)g);
 
 		//ball
 		g.setColor(Color.RED);
