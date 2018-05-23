@@ -41,7 +41,11 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		
 		//Bricks
 		map.draw((Graphics2D)g);
-
+		if (map.bricksBottom == true) {
+			//if the Bricks hit the bottom of the gamescreen the game is lost
+			loseState();
+		}
+		
 		//ball
 		g.setColor(Color.RED);
 		g.fillOval(ballPosX, ballPosY, 20, 20);
