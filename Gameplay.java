@@ -191,6 +191,8 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 				//Adds the balls direction to the last ball coordinates
 				ballPosX += ballXDir;
 				ballPosY += ballYDir;
+				
+				
 				//Left Border
 				if (ballPosX < 0) {
 					ballXDir = -ballXDir;
@@ -351,6 +353,8 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 					}
 			}
 		}while(choicesPicked == false);
+		JOptionPane.showMessageDialog(null, "RULES: 1. Click the mouse to aim and fire the ball. 2. Hitting the side of the ball immediately gets rid of the brick. 3. Clear the bricks to get to the next level");
+		
 	}
 	/**
 	 * <h2> ResetBall </h2>
