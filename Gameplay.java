@@ -88,7 +88,7 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 							
 							score +=5;
 							
-							if((ballPosX +19) <= brickRect.x || (ballPosX +1) >= (brickRect.x +brickRect.width)) {
+							if((ballPosX) <= brickRect.x || (ballPosX)  >= (brickRect.x +brickRect.width)) {
 								ballXDir = -ballXDir;
 							}
 							else {
@@ -138,6 +138,22 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 	}
 	public void actionPerformed(ActionEvent e) {
 		moveBall();
+	}
+	public void winState() {
+		//Put in win dialog box
+		JDialog.setDefaultLookAndFeelDecorated(true);
+		int res =JOptionPane.showConfirmDialog(null,"Do you want to play the next level?", "Confirm Dialog Box", JOptionPane.YES_NO_OPTION);
+			if (res == JOptionPane.NO_OPTION|| res == JOptionPane.CLOSED_OPTION) {
+				System.exit(0);
+				
+			}
+			else {
+				if (res == JOptionPane.YES_OPTION) {
+					//Adds another row of bricks to the next level
+					newBricks++;
+					resetGame();
+				}
+			}
 	}
 	public void resetBall() {
 		ballPosX = 340;
