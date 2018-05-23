@@ -168,6 +168,58 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 			}
 		}
 	}
+	public void difficulty() {
+		boolean choicesPicked = false;
+		//Loops until a correct choice has been made
+		do {
+			//Outputs a box where the user can enter their difficulty
+			String difficultyChoice = JOptionPane.showInputDialog("What Difficulty would you like to play on: Easy, Medium, Hard or Custom");
+			/*
+			 * Each if statement is made for a different choice the user can make.
+			 * The variables are set differently depending on this choice.
+			 * If the user picks custom they can then enter the brick health and 
+			 * amount of rows.
+			 * This will loop till a correct difficulty and/or variables have been
+			 * entered correctly
+			 */
+			
+			if (difficultyChoice.equals("Easy")|| difficultyChoice.equals("easy")) {
+				brickHealth = 1;
+				brickRow = 3;
+				totalBricks = brickRow *7;
+				choicesPicked = true;
+
+			}
+			else if(difficultyChoice.equals("Medium")|| difficultyChoice.equals("medium")) {
+				brickHealth = 2;
+				brickRow = 4;
+				totalBricks = brickRow *7;
+				choicesPicked = true;
+
+			}
+			else if(difficultyChoice.equals("Hard")|| difficultyChoice.equals("hard")) {
+				brickHealth = 3;
+				brickRow = 5;
+				totalBricks = brickRow *7;
+				choicesPicked = true;
+
+			}
+			else if(difficultyChoice.equals("Custom")|| difficultyChoice.equals("custom")) {
+				
+					String health = JOptionPane.showInputDialog("What Health will the Bricks have? Max 10");
+					if(Integer.valueOf(health)<11 && Integer.valueOf(health)>0) {
+						brickHealth = Integer.valueOf(health);
+						choicesPicked = true;
+					}
+					String row = JOptionPane.showInputDialog("How many Rows? Max 7");
+					if(Integer.valueOf(row)<8 && Integer.valueOf(row)>0) {
+						brickRow = Integer.valueOf(row);
+						totalBricks = brickRow *7;
+						choicesPicked = true;
+					}
+			}
+		}while(choicesPicked == false);
+	}
 	public void resetBall() {
 		ballPosX = 340;
 		ballPosY = 925;
