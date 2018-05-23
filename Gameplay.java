@@ -5,7 +5,8 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private boolean play = false, mouseClicked = false, notBottom = true;
 	private Timer timer;
-	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7,score = 0,totalBricks = 21;
+	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7;
+	private int score = 0,totalBricks = 21,newBricks =0;
 	private double ballXDir =-3, ballYDir=-6;
 	private MapGenerator map;
 	
@@ -146,6 +147,14 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 		repaint();
 		mouseClicked = false;
 	}
+	public void resetGame() {	
+		resetBall();
+		totalBricks = 21 + (newBricks*7);
+		score = 0;
+		map = new MapGenerator(3 + newBricks,7, brickHealth);
+		
+    }
+	
 	public void mousePressed(MouseEvent e) {}
 	@Override
 	public void mouseReleased(MouseEvent e) {}
