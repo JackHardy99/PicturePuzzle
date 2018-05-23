@@ -155,6 +155,19 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 				}
 			}
 	}
+	
+	public void loseState() {
+		JDialog.setDefaultLookAndFeelDecorated(true);
+		int lose = JOptionPane.showConfirmDialog(null,"LOSER: Do you want to play again?", "Confirm Dialog Box", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE );
+		if (lose == JOptionPane.NO_OPTION|| lose == JOptionPane.CLOSED_OPTION) {
+			System.exit(0);
+		}
+		else {
+			if (lose == JOptionPane.YES_OPTION) {
+				resetGame();
+			}
+		}
+	}
 	public void resetBall() {
 		ballPosX = 340;
 		ballPosY = 925;
