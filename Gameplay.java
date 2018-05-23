@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Gameplay extends JPanel implements MouseListener, KeyListener, ActionListener{
 	private boolean play = false, mouseClicked = false, notBottom = true;
 	private Timer timer;
-	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7,score;
+	private int delay = 8, ballPosX = 340, ballPosY = 925, mouseClickX = 0, mouseClickY = 0, brickHealth = 1,brickRow =3, brickColumn=7,score = 0,totalBricks = 21;
 	private double ballXDir =-3, ballYDir=-6;
 	private MapGenerator map;
 	
@@ -64,8 +64,43 @@ public class Gameplay extends JPanel implements MouseListener, KeyListener, Acti
 	
 	public void moveBall() {
 		timer.start();
+		if(play && notBottom) {
+			//the first map is the map variable in here and the second map is the map in the generator
+			for(int i =0; i<map.map.length; i++ ) {
+				for (int j =0; j<map.map[0].length; j++) {
+					
+					if(map.map[i][j]>0) {
+						int brickX = j*map.brickWidth + 80;
+						int brickY = i* map.brickHeight + (map.numberOfDrops * 50);
+						int brickWidth = map.brickWidth;
+						int brickHeight = map.brickHeight;
+						
+						Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
+						Rectangle ballRect = new Rectangle(ballPosX, ballPosY,20,20);
+						Rectangle brickRect = rect;
+						
+						if(ballRect.intersects(brickRect)) {
+							map.setBrickValue(i,j);
+							if(map.getBrickValue(i, j) == 0) {
+								totalBricks--;
+							}
+							
+							score +=5;
+							
+							if((ballPosX +19) <= brickRect.x || (ballPosX +1) >= (brickRect.x +brickRect.width)) {
+								ballXDir = -ballXDir;
+							}
+							else {
+								ballYDir = -ballYDir;
+							}
+						
+							
+						}
+					}
+				}
+			}
 		
-			if (play) {
+	
 				ballPosX += ballXDir;
 				ballPosY += ballYDir;
 				//Left Border
